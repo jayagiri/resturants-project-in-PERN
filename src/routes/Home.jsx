@@ -1,9 +1,13 @@
 import React from 'react'
-
+import AddRestaurants from '../components/AddRestaurants'
+import Header from '../components/Header'
+import RestaurantsList from '../components/RestaurantsList'
 const Home = () => {
   return (
     <div>
-      Home
+      <Header/>
+      <AddRestaurants/>
+      <RestaurantsList/>
     </div>
   )
 }
