@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import ResturantFinder from '../apis/ResturantFinder'
+import { RestaurantsContext } from '../context/RestaurantsContext';
 
-const RestaurantsList = () => {
-    useEffect( () => {
+const RestaurantsList = (props) => {
+    const { restaurants, setRestaurants } = useContext(RestaurantsContext)
+    useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await ResturantFinder.get("/");
-                console.log(response);
-            } catch (err) {}
+                setRestaurants(response.data.data.restaurants);
+            } catch (err) { }
         };
         fetchData();
     }, []);
@@ -23,9 +25,27 @@ const RestaurantsList = () => {
                         <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
                     </tr>
-                </thead>
+                </thead> 
                 <tbody>
-                    <tr>
+                    {restaurants.map(restaurant => {
+                        return (
+                            <tr>
+                                <td>{restaurant.name}</td>
+                                <td>{restaurant.location}</td>
+                                <td>{"$".repeat(restaurant.price_range)}</td>
+                                <td>reviews</td>
+                                <td>
+                                    <button className="btn btn-warning">Update</button>
+                                </td>
+                                <td>
+                                    <button className="btn btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                        )
+                    })}
+
+
+                    {/*  <tr>
                         <td>macdonald</td>
                         <td>macdonald</td>
                         <td>thankot</td>
@@ -54,7 +74,7 @@ const RestaurantsList = () => {
                         <td><button className="btn btn-danger">Delete </button></td>
 
 
-                    </tr>
+    </tr>  */}
                 </tbody>
             </table>
 
