@@ -1,11 +1,14 @@
 import React from 'react'
-
-const Update = () => {
+import UpdateRestaurant from "../components/UpateRestaurant";
+const UpdatePage = () => {
   return (
     <div>
-      Update
-    </div>
-  )
-}
+      <h1 className="text-center">Update Restaurant</h1>
+      <UpdateRestaurant />
 
-export default Update
+    </div>
+  );
+};
+
+export default UpdatePage;
+
