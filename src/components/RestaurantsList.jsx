@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import RestaurantFinder from '../apis/ResturantFinder'
 import { RestaurantsContext } from '../context/RestaurantsContext';
-
+import StarRating from '../components/StarRating';
 const RestaurantsList = (props) => {
     const { restaurants, setRestaurants } = useContext(RestaurantsContext);
 
@@ -50,9 +50,24 @@ const RestaurantsList = (props) => {
 
 const handleRestaurantSelect=(id)=>{
     history.push(`/restaurants/${id}`);
+};
+
+
+
+//  rander restaurant..........
+const randerRating=(restaurant)=>{
+    if (!restaurant.count){
+        return <span className="text-warning">0 reviews</span>
+    }
+    return (
+    <> 
+    <StarRating rating={restaurant.id} />
+
+    <span className="text-warning ml-1">{restaurant.count}</span>
+    </>
+    );
+
 }
-
-
 
 
 
@@ -78,7 +93,7 @@ const handleRestaurantSelect=(id)=>{
                                 <td>{restaurant.name}</td>
                                 <td>{restaurant.location}</td>
                                 <td>{"$".repeat(restaurant.price_range)}</td>
-                                <td>reviews</td>
+                                <td>{randerRating(restaurant)}</td>
                                 <td>
                                     <button onClick={(e) => handleUpdate(e, restaurant.id)} className="btn btn-warning">Update</button>
                                 </td>
@@ -90,36 +105,7 @@ const handleRestaurantSelect=(id)=>{
                     })}
 
 
-                    {/*  <tr>
-                        <td>macdonald</td>
-                        <td>macdonald</td>
-                        <td>thankot</td>
-                        <td>$$</td>
-                        <td><button className="btn btn-warning">Update</button></td>
-                        <td><button className="btn btn-danger">Delete </button></td>
-
-
-                    </tr>
-                    <tr>
-                        <td>macdonald</td>
-                        <td>macdonald</td>
-                        <td>thankot</td>
-                        <td>$$</td>
-                        <td><button className="btn btn-warning">Update</button></td>
-                        <td><button className="btn btn-danger">Delete </button></td>
-
-
-                    </tr>
-                    <tr>
-                        <td>macdonald</td>
-                        <td>macdonald</td>
-                        <td>thankot</td>
-                        <td>$$</td>
-                        <td><button className="btn btn-warning">Update</button></td>
-                        <td><button className="btn btn-danger">Delete </button></td>
-
-
-    </tr>  */}
+                    
                 </tbody>
             </table>
 
