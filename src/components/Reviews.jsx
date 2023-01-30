@@ -19,7 +19,7 @@ const Reviews = ({ reviews }) => {
                             <p className="card-test">{review.review}</p>
                         </div>
                     </div>
-                );
+                );  
             })}
 
             {/* 
