@@ -1,9 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { RestaurantsContext } from '../context/RestaurantsContext'
-import ResturantFinder from '../apis/ResturantFinder'
+import ResturantFinder from '../apis/RestaurantFinder'
 import StarRating from '../components/StarRating'
-
 import Reviews from '../components/Reviews'
 import AddReview from '../components/AddReview'
 
