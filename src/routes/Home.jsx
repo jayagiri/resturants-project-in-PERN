@@ -1,12 +1,12 @@
 import React from 'react'
-import AddRestaurants from '../components/AddRestaurants'
+import AddRestaurant from '../components/AddRestaurant'
 import Header from '../components/Header'
 import RestaurantsList from '../components/RestaurantsList'
 const Home = () => {
   return (
     <div>
       <Header/>
-      <AddRestaurants/>
+      <AddRestaurant/>
       <RestaurantsList/>
     </div>
   )
